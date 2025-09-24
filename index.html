@@ -1,13 +1,4 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Untitled</title>
-  <link rel="stylesheet" href="./style.css">
-
-</head>
-<body>
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -202,6 +193,21 @@
 
         .btn-share:hover {
             background: #059669;
+        }
+
+        .btn-resources {
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-resources:hover {
+            background: #7c3aed;
         }
 
         .analytics-grid {
@@ -448,6 +454,34 @@
             flex-wrap: wrap;
         }
 
+        .resource-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        .resource-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .resource-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .resource-section h3:first-of-type {
+            margin-top: 0;
+        }
+
         @media (max-width: 768px) {
             .header {
                 padding: 1rem;
@@ -501,6 +535,7 @@
                 <h1>Fundraising Assessment Pro</h1>
                 <div class="header-buttons">
                     <button onclick="shareApp()" class="btn-share">📤 Share</button>
+                    <button onclick="showPage('resources-page')" class="btn-resources">📚 Resources</button>
                     <button onclick="adminLogin()" class="btn-admin">🔐 Admin</button>
                 </div>
             </header>
@@ -553,13 +588,13 @@
             <header class="header">
                 <h1>Fundraising Assessment</h1>
                 <div class="header-info">
-                    <span id="question-counter">Question 1 of 3</span>
+                    <span id="question-counter">Question 1 of 8</span>
                 </div>
             </header>
             
             <main class="main-content">
                 <div class="progress-bar">
-                    <div id="progress-fill" class="progress-fill" style="width: 33%"></div>
+                    <div id="progress-fill" class="progress-fill" style="width: 12.5%"></div>
                 </div>
                 
                 <div id="question-card" class="question-card">
@@ -579,6 +614,7 @@
                 <h1>Your Assessment Results</h1>
                 <div class="header-buttons">
                     <button onclick="shareApp()" class="btn-share">📤 Share</button>
+                    <button onclick="showPage('resources-page')" class="btn-resources">📚 Resources</button>
                     <button onclick="showPage('home-page')" class="btn-secondary">← Home</button>
                 </div>
             </header>
@@ -626,7 +662,88 @@
                 
                 <div class="actions">
                     <button onclick="startAssessment()" class="btn-primary">🔄 Retake Assessment</button>
+                    <button onclick="showPage('resources-page')" class="btn-resources">📚 View Resources</button>
                     <button onclick="shareApp()" class="btn-secondary">📤 Share Results</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Resources Page -->
+        <div id="resources-page" class="page">
+            <header class="header">
+                <h1>📚 Fundraising Resources</h1>
+                <div class="header-buttons">
+                    <button onclick="shareApp()" class="btn-share">📤 Share</button>
+                    <button onclick="showPage('home-page')" class="btn-secondary">← Home</button>
+                </div>
+            </header>
+            
+            <main class="main-content">
+                <div class="resource-section">
+                    <h2>🎯 Donor-Centered Fundraising Best Practices</h2>
+                    
+                    <h3>🗣️ Conversation Starters</h3>
+                    <p>Instead of leading with your organization's needs, try these donor-centered openers:</p>
+                    <ul>
+                        <li><strong>"What first got you interested in [cause area]?"</strong> - Opens the door to their personal story</li>
+                        <li><strong>"What would you most like to see change in this area?"</strong> - Reveals their vision and priorities</li>
+                        <li><strong>"Tell me about a time when you felt really connected to this cause."</strong> - Invites emotional engagement</li>
+                        <li><strong>"What questions do you have about the work we're doing?"</strong> - Shows you value their curiosity</li>
+                    </ul>
+
+                    <h3>👂 Active Listening Techniques</h3>
+                    <p>Transform your conversations by becoming a better listener:</p>
+                    <ul>
+                        <li><strong>The 70/30 Rule:</strong> Aim for 70% listening, 30% talking in donor meetings</li>
+                        <li><strong>Ask Follow-up Questions:</strong> "Tell me more about that..." or "What was that experience like?"</li>
+                        <li><strong>Reflect Back:</strong> "It sounds like you're saying..." to show you're truly hearing them</li>
+                        <li><strong>Pause Before Responding:</strong> Give them space to share more before jumping in</li>
+                        <li><strong>Take Notes:</strong> Shows respect and helps you remember their interests for future conversations</li>
+                    </ul>
+
+                    <h3>🤝 Building Authentic Relationships</h3>
+                    <p>Move beyond transactional interactions to meaningful partnerships:</p>
+                    <ul>
+                        <li><strong>Find Common Ground:</strong> Look for shared values and experiences, not just shared interests in your cause</li>
+                        <li><strong>Be Genuinely Curious:</strong> Ask questions because you want to know, not because you're fishing for information</li>
+                        <li><strong>Share Appropriately:</strong> When they ask about you, share authentically but keep the focus on them</li>
+                        <li><strong>Follow Their Lead:</strong> Let them guide the conversation to topics they're passionate about</li>
+                        <li><strong>Remember Personal Details:</strong> Follow up on things they've shared in previous conversations</li>
+                    </ul>
+
+                    <h3>⏰ Timing Your Ask</h3>
+                    <p>Know when and how to transition from relationship-building to partnership discussions:</p>
+                    <ul>
+                        <li><strong>Wait for Natural Openings:</strong> "How can I get involved?" or "What do you need most?"</li>
+                        <li><strong>Connect to Their Interests:</strong> Link giving opportunities to what they've told you matters to them</li>
+                        <li><strong>Start with Engagement:</strong> Invite them to see your work before asking for financial support</li>
+                        <li><strong>Make it About Impact:</strong> Frame requests around the change they want to see, not your budget needs</li>
+                    </ul>
+
+                    <h3>🚫 Common Mistakes to Avoid</h3>
+                    <p>Pitfalls that can derail donor-centered conversations:</p>
+                    <ul>
+                        <li><strong>The Immediate Pivot:</strong> Don't immediately connect everything they say to your organization</li>
+                        <li><strong>The Monologue:</strong> Avoid long presentations about your work without checking for engagement</li>
+                        <li><strong>The Assumption:</strong> Don't assume you know what they care about based on their demographics</li>
+                        <li><strong>The Pushy Follow-up:</strong> Respect their timeline and communication preferences</li>
+                        <li><strong>The One-Size-Fits-All:</strong> Tailor your approach to each individual donor's interests and style</li>
+                    </ul>
+
+                    <h3>📈 Measuring Success</h3>
+                    <p>How to know if your donor-centered approach is working:</p>
+                    <ul>
+                        <li><strong>Longer Conversations:</strong> Donors want to keep talking and sharing</li>
+                        <li><strong>More Questions:</strong> They ask about your work because they're genuinely interested</li>
+                        <li><strong>Repeat Engagement:</strong> They accept invitations to events, tours, or follow-up meetings</li>
+                        <li><strong>Referrals:</strong> They introduce you to others who share their interests</li>
+                        <li><strong>Deeper Giving:</strong> They increase their support over time as the relationship deepens</li>
+                    </ul>
+                </div>
+
+                <div class="actions">
+                    <button onclick="startAssessment()" class="btn-primary">📝 Take Assessment</button>
+                    <button onclick="shareApp()" class="btn-secondary">📤 Share Resources</button>
                 </div>
             </main>
         </div>
@@ -675,33 +792,94 @@
     </div>
 
     <script>
-        // Assessment Questions (simplified for testing)
+        // COMPLETE 8 ASSESSMENT QUESTIONS
         const questions = [
             {
                 id: 1,
                 question: "When you first meet a potential donor, what do you typically start with?",
+                description: "Think about your usual opening conversation in a first meeting.",
                 options: [
-                    { value: 'organization', text: "Tell them about your organization and its needs", score: 1 },
-                    { value: 'ask_interests', text: "Ask about their interests and what matters to them", score: 5 },
-                    { value: 'mixed', text: "Brief organization intro, then ask about their interests", score: 3 }
+                    { value: 'organization', text: "Tell them about your organization and its needs", description: "Start with your mission, programs, and funding requirements", score: 1 },
+                    { value: 'ask_interests', text: "Ask about their interests and what matters to them", description: "Show curiosity about their passions and values first", score: 5 },
+                    { value: 'mixed', text: "Brief organization intro, then ask about their interests", description: "Combine both approaches in the conversation", score: 3 },
+                    { value: 'unsure', text: "I'm not sure - it varies depending on the situation", description: "No consistent approach to opening conversations", score: 2 }
                 ]
             },
             {
                 id: 2,
-                question: "How do you typically respond when someone shares their personal experiences?",
+                question: "How do you typically respond when someone shares their personal experiences or interests?",
+                description: "Consider your natural reaction when donors open up about what they care about.",
                 options: [
-                    { value: 'connect_org', text: "Immediately connect it to how your organization addresses that issue", score: 2 },
-                    { value: 'ask_more', text: "Ask follow-up questions to understand their perspective better", score: 5 },
-                    { value: 'listen_wait', text: "Listen carefully and wait for natural opportunities to connect", score: 4 }
+                    { value: 'connect_org', text: "Immediately connect it to how your organization addresses that issue", description: "Quick to make the link to your programs and services", score: 2 },
+                    { value: 'ask_more', text: "Ask follow-up questions to understand their perspective better", description: "Show genuine curiosity and let them share more", score: 5 },
+                    { value: 'acknowledge_pivot', text: "Acknowledge their interest, then pivot to your organization", description: "Brief recognition before steering to your agenda", score: 3 },
+                    { value: 'listen_wait', text: "Listen carefully and wait for natural opportunities to connect", description: "Patient approach, letting connections emerge organically", score: 4 }
                 ]
             },
             {
                 id: 3,
                 question: "What questions do you find most effective in donor conversations?",
+                description: "Think about the questions that generate the most meaningful responses.",
                 options: [
-                    { value: 'giving_capacity', text: "Questions about their giving capacity and preferences", score: 2 },
-                    { value: 'personal_connection', text: "Questions about their personal connection to the cause", score: 5 },
-                    { value: 'org_programs', text: "Questions about which of your programs interest them most", score: 3 }
+                    { value: 'giving_capacity', text: "Questions about their giving capacity and preferences", description: "Focus on donation amounts and giving history", score: 2 },
+                    { value: 'personal_connection', text: "Questions about their personal connection to the cause", description: "What first got you interested in this issue?", score: 5 },
+                    { value: 'org_programs', text: "Questions about which of your programs interest them most", description: "Present options and ask for their preferences", score: 3 },
+                    { value: 'impact_vision', text: "Questions about what impact they'd most like to see", description: "What would make the biggest difference in your view?", score: 4 }
+                ]
+            },
+            {
+                id: 4,
+                question: "How do you handle it when a donor seems hesitant or unengaged?",
+                description: "Your approach when conversations aren't flowing naturally.",
+                options: [
+                    { value: 'push_harder', text: "Present more compelling information about your organization", description: "Share more statistics, stories, and urgent needs", score: 1 },
+                    { value: 'step_back', text: "Step back and ask what's really important to them", description: "Shift focus entirely to their interests and concerns", score: 5 },
+                    { value: 'different_angle', text: "Try a different angle or program that might interest them", description: "Present alternative ways they could get involved", score: 3 },
+                    { value: 'end_gracefully', text: "Acknowledge it might not be the right fit and end gracefully", description: "Respect their position and maintain the relationship", score: 4 }
+                ]
+            },
+            {
+                id: 5,
+                question: "What do you believe is the most important factor in successful fundraising?",
+                description: "Your core philosophy about what makes fundraising work.",
+                options: [
+                    { value: 'compelling_case', text: "Having a compelling case for support", description: "Strong organizational story and clear needs", score: 2 },
+                    { value: 'genuine_relationships', text: "Building genuine relationships based on shared values", description: "Authentic connections that go beyond transactions", score: 5 },
+                    { value: 'right_timing', text: "Finding the right timing and approach for each donor", description: "Strategic timing and personalized cultivation", score: 4 },
+                    { value: 'clear_impact', text: "Demonstrating clear, measurable impact", description: "Concrete results and accountability", score: 3 }
+                ]
+            },
+            {
+                id: 6,
+                question: "How often do you find yourself talking versus listening in donor meetings?",
+                description: "Be honest about the typical balance in your conversations.",
+                options: [
+                    { value: 'mostly_talking', text: "I do most of the talking - sharing information and making the case", description: "60-80% talking, presenting organizational information", score: 1 },
+                    { value: 'balanced', text: "It's fairly balanced - we both share equally", description: "50/50 split between talking and listening", score: 3 },
+                    { value: 'mostly_listening', text: "I do more listening - asking questions and learning about them", description: "60-80% listening, focusing on their perspectives", score: 5 },
+                    { value: 'varies', text: "It varies greatly depending on the donor and situation", description: "No consistent pattern in conversation balance", score: 2 }
+                ]
+            },
+            {
+                id: 7,
+                question: "When do you typically bring up specific funding needs or donation amounts?",
+                description: "The timing of your financial asks in the relationship.",
+                options: [
+                    { value: 'early_meeting', text: "Early in the first or second meeting", description: "Get the financial conversation started quickly", score: 2 },
+                    { value: 'after_connection', text: "After establishing a connection to their interests", description: "Wait until you understand what motivates them", score: 5 },
+                    { value: 'when_asked', text: "When they ask about ways to get involved", description: "Let them initiate the conversation about giving", score: 4 },
+                    { value: 'formal_proposal', text: "In a formal proposal after several meetings", description: "Follow a structured cultivation timeline", score: 3 }
+                ]
+            },
+            {
+                id: 8,
+                question: "What's your primary goal for a first meeting with a potential major donor?",
+                description: "What you most hope to accomplish in that initial conversation.",
+                options: [
+                    { value: 'secure_gift', text: "Secure a significant gift or commitment", description: "Make the ask and close the deal", score: 1 },
+                    { value: 'understand_interests', text: "Understand their interests and motivations", description: "Learn what they care about and why", score: 5 },
+                    { value: 'present_opportunities', text: "Present various giving opportunities", description: "Show them different ways to get involved", score: 2 },
+                    { value: 'build_rapport', text: "Build rapport and schedule a follow-up meeting", description: "Establish relationship foundation for future conversations", score: 4 }
                 ]
             }
         ];
@@ -744,12 +922,14 @@
             const questionCard = document.getElementById('question-card');
             questionCard.innerHTML = `
                 <h2>${question.question}</h2>
+                ${question.description ? `<p style="color: #64748b; margin-bottom: 1.5rem;">${question.description}</p>` : ''}
                 <div class="options">
                     ${question.options.map((option, index) => `
                         <div class="option" onclick="selectAnswer('${option.value}')">
                             <input type="radio" name="answer" value="${option.value}" ${selectedAnswer === option.value ? 'checked' : ''}>
                             <span>
-                                <div style="font-weight: 500;">${option.text}</div>
+                                <div style="font-weight: 500; margin-bottom: 0.25rem;">${option.text}</div>
+                                ${option.description ? `<div style="font-size: 0.875rem; color: #64748b;">${option.description}</div>` : ''}
                             </span>
                         </div>
                     `).join('')}
@@ -804,7 +984,8 @@
                 score: score,
                 timestamp: new Date().toISOString(),
                 category: category.title,
-                answers: {...answers}
+                answers: {...answers},
+                completedQuestions: Object.keys(answers).length
             };
             
             // Get existing completions
@@ -823,21 +1004,32 @@
                         score: 85,
                         timestamp: new Date(Date.now() - 86400000).toISOString(),
                         category: 'Donor-Centered Champion',
-                        answers: {}
+                        answers: {},
+                        completedQuestions: 8
                     },
                     {
                         id: Date.now() - 172800000,
                         score: 72,
                         timestamp: new Date(Date.now() - 172800000).toISOString(),
                         category: 'Relationship Builder',
-                        answers: {}
+                        answers: {},
+                        completedQuestions: 8
                     },
                     {
                         id: Date.now() - 259200000,
                         score: 45,
                         timestamp: new Date(Date.now() - 259200000).toISOString(),
                         category: 'Transitioning Fundraiser',
-                        answers: {}
+                        answers: {},
+                        completedQuestions: 8
+                    },
+                    {
+                        id: Date.now() - 345600000,
+                        score: 91,
+                        timestamp: new Date(Date.now() - 345600000).toISOString(),
+                        category: 'Donor-Centered Champion',
+                        answers: {},
+                        completedQuestions: 8
                     }
                 ];
                 
@@ -846,6 +1038,11 @@
             
             // Add new completion
             completions.unshift(completion);
+            
+            // Keep only last 50 completions
+            if (completions.length > 50) {
+                completions = completions.slice(0, 50);
+            }
             
             // Save
             try {
@@ -885,30 +1082,30 @@
                 return {
                     title: 'Donor-Centered Champion',
                     color: 'text-green-600',
-                    description: 'You have mastered the art of donor-centered fundraising. You consistently start with curiosity about your donors.'
+                    description: 'You have mastered the art of donor-centered fundraising. You consistently start with curiosity about your donors and build genuine relationships.'
                 };
             } else if (score >= 60) {
                 return {
                     title: 'Relationship Builder',
                     color: 'text-blue-600',
-                    description: 'You understand the importance of donor relationships and often put their interests first.'
+                    description: 'You understand the importance of donor relationships and often put their interests first. With some refinement, you can become even more effective.'
                 };
             } else if (score >= 40) {
                 return {
                     title: 'Transitioning Fundraiser',
                     color: 'text-yellow-600',
-                    description: 'You are beginning to shift from organization-centered to donor-centered approaches.'
+                    description: 'You are beginning to shift from organization-centered to donor-centered approaches. Focus on asking more questions and listening more deeply.'
                 };
             } else {
                 return {
                     title: 'Organization-Centered Approach',
                     color: 'text-red-600',
-                    description: 'You tend to lead with your organization\'s needs rather than donor interests.'
+                    description: 'You tend to lead with your organization\'s needs rather than donor interests. Learning to start with curiosity will transform your fundraising success.'
                 };
             }
         }
 
-        // ADMIN FUNCTIONS - NOW WORKING!
+        // ADMIN FUNCTIONS
         function adminLogin() {
             const password = prompt('🔐 Enter admin password:');
             if (password === 'admin123') {
@@ -989,7 +1186,7 @@
                     </p>
                 `;
             } else {
-                completionsList.innerHTML = completions.slice(0, 10).map(completion => `
+                completionsList.innerHTML = completions.slice(0, 15).map(completion => `
                     <div class="completion-item">
                         <div class="completion-score">${completion.score}%</div>
                         <div style="flex: 1;">
@@ -1031,11 +1228,11 @@
             console.log('🚀 Fundraising Assessment Pro loaded successfully');
             console.log('👤 Admin password: admin123');
             console.log('📊 Analytics tracking: Active');
+            console.log('📚 Resources page: Available');
+            console.log('❓ Questions: 8 complete questions');
         });
     </script>
 </body>
 </html>
-  <script  src="./script.js"></script>
 
-</body>
-</html>
+

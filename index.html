@@ -1,30 +1,1041 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Fundraising Assessment Pro</title><meta name="description" content="Transform your fundraisingapproach with donor-centered strategies. Created by MarkDobosz."><meta name="author" content="Mark Dobosz"><style>* {margin: 0;padding: 0;box-sizing: border-box;}body {font-family: -apple-system, BlinkMacSystemFont,’Segoe UI’, ’Roboto’, sans-serif;line-height: 1.6;color: #333;background-color: #f8fafc;}.app {min-height: 100vh;display: flex;flex-direction: column;}.header {background: white;border-bottom: 1px solid #e2e8f0;padding: 1rem 2rem;display: flex;justify-content: space-between;align-items: center;position: sticky;top: 0;z-index: 10;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);}.header h1 {font-size: 1.5rem;
-font-weight: 600;color: #1e293b;}.header-info {color: #64748b;font-size: 0.875rem;}.header-buttons {display: flex;gap: 0.5rem;}.main-content {flex: 1;padding: 2rem;max-width: 1200px;margin: 0 auto;width: 100%;}.hero {text-align: center;margin-bottom: 4rem;padding: 3rem 2rem;background: linear-gradient(135deg, #dbeafe 0%,#e0e7ff 100%);border-radius: 1rem;}.hero h2 {font-size: 2.5rem;font-weight: 700;color: #1e293b;margin-bottom: 1rem;}.hero p {font-size: 1.25rem;color: #475569;margin-bottom: 2rem;max-width: 600px;margin-left: auto;margin-right: auto;}
-.features {display: grid;grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));gap: 2rem;margin-bottom: 3rem;}.feature-card {background: white;padding: 2rem;border-radius: 0.75rem;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);border: 1px solid #e2e8f0;transition: transform 0.2s, box-shadow 0.2s;}.feature-card:hover {transform: translateY(-2px);box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);}.feature-card h3 {font-size: 1.25rem;font-weight: 600;color: #1e293b;margin-bottom: 0.75rem;}.btn-primary {background: #3b82f6;color: white;border: none;padding: 0.75rem 1.5rem;border-radius: 0.5rem;font-size: 1rem;font-weight: 500;cursor: pointer;transition: all 0.2s;text-decoration: none;display: inline-block;}.btn-primary:hover {background: #2563eb;transform: translateY(-1px);}
-.btn-primary:disabled {background: #94a3b8;cursor: not-allowed;transform: none;}.btn-secondary {background: white;color: #374151;border: 1px solid #d1d5db;padding: 0.5rem 1rem;border-radius: 0.5rem;font-size: 0.875rem;cursor: pointer;transition: all 0.2s;text-decoration: none;display: inline-block;}.btn-secondary:hover {background: #f9fafb;border-color: #9ca3af;}.btn-admin {background: #6b7280;color: white;border: none;padding: 0.5rem 1rem;border-radius: 0.5rem;font-size: 0.875rem;cursor: pointer;transition: all 0.2s;}.btn-admin:hover {background: #4b5563;}.progress-bar {width: 100%;height: 0.5rem;background: #e2e8f0;border-radius:0.25rem;margin-bottom:2rem;overflow: hidden;
-}.progress-fill {height: 100%;background: #3b82f6;transition: width 0.3s ease;}.question-card {background: white;padding: 2rem;border-radius: 0.75rem;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);margin-bottom: 2rem;border: 1px solid #e2e8f0;}.question-card h2 {font-size: 1.5rem;font-weight: 600;color: #1e293b;margin-bottom: 1.5rem;}.options {display: flex;flex-direction: column;gap: 1rem;}.option {display: flex;align-items: flex-start;gap: 0.75rem;padding: 1rem;border: 2px solid #e2e8f0;border-radius: 0.5rem;cursor: pointer;transition: all 0.2s;background: white;}.option:hover {background: #f8fafc;border-color: #3b82f6;}
-.option.selected {border-color: #3b82f6;background: #eff6ff;}.option input[type="radio"] {margin-top: 0.125rem;}.option span {flex: 1;font-weight: 500;}.navigation {display: flex;justify-content: space-between;gap: 1rem;}.results-card {background: white;padding: 3rem;border-radius: 0.75rem;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);text-align: center;margin-bottom: 2rem;border: 1px solid #e2e8f0;}.score-circle {width: 8rem;height: 8rem;border-radius: 50%;background: linear-gradient(135deg, #dbeafe 0%,#bfdbfe 100%);display: flex;align-items: center;justify-content: center;margin: 0 auto 1.5rem;position: relative;}.score-number {font-size: 2rem;font-weight: 700;color: #1e293b;
-}.results-card h2 {font-size: 1.75rem;font-weight: 600;margin-bottom: 1rem;}.text-green-600 { color: #059669; }.text-blue-600 { color: #2563eb; }.text-yellow-600 { color: #d97706; }.text-red-600 { color: #dc2626; }.recommendations {display: grid;grid-template-columns: repeat(auto-fit,minmax(350px, 1fr));gap: 2rem;margin-bottom: 2rem;}.recommendation-card {background: white;padding: 2rem;border-radius: 0.75rem;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);border: 1px solid #e2e8f0;}.recommendation-card h3 {font-size: 1.25rem;font-weight: 600;color: #1e293b;margin-bottom: 0.75rem;}.recommendation-card ul {margin-top: 1rem;padding-left: 1.25rem;}.recommendation-card li {margin-bottom: 0.5rem;color: #64748b;}.actions {
-display: flex;justify-content: center;gap: 1rem;flex-wrap: wrap;}.analytics-grid {display: grid;grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));gap: 1.5rem;margin-bottom: 2rem;}.stat-card {background: white;padding: 1.5rem;border-radius: 0.75rem;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);text-align: center;border: 1px solid #e2e8f0;}.stat-card h3 {font-size: 0.875rem;font-weight: 500;color: #64748b;margin-bottom: 0.5rem;}.stat-number {font-size: 2rem;font-weight: 700;color: #1e293b;}.recent-completions {background: white;padding: 2rem;border-radius: 0.75rem;box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);border: 1px solid #e2e8f0;}.completions-list {display: flex;flex-direction: column;
-gap: 1rem;}.completion-item {display: flex;align-items: center;gap: 1rem;padding: 1rem;border: 1px solid #e2e8f0;border-radius: 0.5rem;background: #f8fafc;}.completion-score {font-size: 1.5rem;font-weight: 700;color: #3b82f6;min-width: 4rem;}.completion-category {font-weight: 500;color: #1e293b;}.completion-date {font-size: 0.875rem;color: #64748b;}.footer {background: white;border-top: 1px solid #e2e8f0;padding: 1.5rem 2rem;text-align: center;color: #64748b;font-size: 0.875rem;margin-top: auto;}.hidden {display: none;}.page {display: none;}
-.page.active {display: block;}@media (max-width: 768px) {.header {padding: 1rem;flex-direction: column;gap: 1rem;}.main-content {padding: 1rem;}.hero h2 {font-size: 2rem;}.hero p {font-size: 1rem;}.navigation {flex-direction: column;}.actions {flex-direction: column;}.recommendations {grid-template-columns: 1fr;}.features {grid-template-columns: 1fr;}}</style></head><body><div class="app"><!-- Home Page --><div id="home-page" class="page active"><header class="header">
-<h1>Fundraising Assessment Pro</h1><div class="header-buttons"><button onclick="shareApp()" class="btn-secondary">Share App</button><button onclick="adminLogin()" class="btn-admin">Admin</button></div></header><main class="main-content"><div class="hero"><h2>Stop Leading with Your Organization’sNeeds</h2><p>Transform your fundraising approach bystarting with curiosity about your donors. Learn to connectauthentically and build lasting relationships that benefit bothyour cause and your supporters.</p><button onclick="startAssessment()"class="btn-primary">Take Assessment</button></div><div class="features"><div class="feature-card"><h3>🎯     Donor-Centered Approach</h3><p>Learn to connect with donors throughgenuine curiosity about their interests and passions.</p></div><div class="feature-card"><h3>🤝     Relationship Building</h3><p>Discover how to build meaningfulrelationships that go beyond transactional interactions.</p></div><div class="feature-card"><h3>📊     Strategic Assessment</h3><p>Evaluate your current fundraisingapproach and identify areas for improvement.</p></div><div class="feature-card"> <h3>📈Proven Results</h3><p>Apply evidence-based strategies thatsuccessful fundraisers use to engage donors.</p></div></div><div style="text-align: center; background:#f1f5f9; padding: 2rem; border-radius: 1rem; margin-top: 2rem;"><blockquote style="font-size: 1.5rem; font-
-style: italic; color: #1e293b; margin-bottom: 1rem;">"What if you started with curiosityabout the person you’re talking to instead?"</blockquote><p style="color: #64748b; margin-bottom:1.5rem;">By the time you talk about what yourorganization does, people are already thinking abouthow they might want to be involved—because theconversation started with their interests, not yourneeds.</p><button onclick="startAssessment()"class="btn-primary">Start Your Assessment</button></div></main><footer class="footer"><p>© 2025 Mark Dobosz. All rights reserved.</p></footer></div><!-- Assessment Page --><div id="assessment-page" class="page"><header class="header"><h1>Fundraising Assessment</h1><div class="header-info"><span id="question-counter">Question 1 of8</span></div></header><main class="main-content"><div class="progress-bar"><div id="progress-fill" class="progress-fill" style="width: 12.5%"></div></div><div id="question-card" class="question-card"><!-- Question content will be inserted here--></div><div class="navigation"><button id="prev-btn"onclick="previousQuestion()" class="btn-secondary"disabled>Previous</button>
-<button id="next-btn"onclick="nextQuestion()" class="btn-primary" disabled>Next</button></div></main></div><!-- Results Page --><div id="results-page" class="page"><header class="header"><h1>Your Assessment Results</h1><div class="header-buttons"><button onclick="showPage(’home-page’)"class="btn-secondary">Back to Home</button></div></header><main class="main-content"><div class="results-card"><div class="score-circle"><div id="final-score" class="score-number">0%</div></div><h2 id="score-category" class="text-blue-600">Assessment Complete</h2><p id="score-description">Based on yourresponses, here’s how you can improve your fundraisingapproach:</p></div><div class="recommendations"><div class="recommendation-card"><h3>🎯     Start with Curiosity</h3><p>Begin every donor conversation byasking about their interests and what matters to thempersonally.</p><ul><li>Ask: "What first got youinterested in this issue?"</li><li>Listen for personal stories andexperiences</li><li>Show genuine curiosity abouttheir perspective</li></ul></div><div class="recommendation-card">
-<h3>👂     Listen More, Talk Less</h3> <p>Aimfor 70% listening and 30% talkingin your donor conversations.</p><ul><li>Ask follow-up questions tounderstand deeper</li><li>Resist the urge to immediatelyconnect to your organization</li><li>Let donors share their fullstory before responding</li></ul></div><div class="recommendation-card"> <h3>🤝Connect Authentically</h3> <p>Makeconnections between donorinterests and your work naturally, not forcefully.</p><ul><li>Wait for organic opportunitiesto share your work</li><li>Focus on shared values ratherthan organizational needs</li><li>Let the connection emerge fromtheir interests</li></ul></div></div><div class="actions"><button onclick="startAssessment()"class="btn-primary">Retake Assessment</button><button onclick="shareApp()" class="btn-secondary">Share This App</button></div></main></div><!-- Analytics Page --><div id="analytics-page" class="page"><header class="header"><h1>Analytics Dashboard</h1><div class="header-buttons"><button onclick="showPage(’home-page’)"class="btn-secondary">Back to Home</button><button onclick="logoutAdmin()" class="btn-admin">Logout</button></div>
-</header><main class="main-content"><div class="analytics-grid"><div class="stat-card"><h3>Total Completions</h3><div id="total-completions" class="stat-number">0</div></div><div class="stat-card"><h3>Average Score</h3><div id="average-score" class="stat-number">0%</div></div><div class="stat-card"><h3>This Month</h3><div id="month-completions" class="stat-number">0</div></div><div class="stat-card"><h3>Top Category</h3><div id="top-category" class="stat-number" style="font-size: 1rem;">N/A</div></div></div><div class="recent-completions"><h3>Recent Completions</h3><div id="completions-list"class="completions-list"><p style="text-align: center; color:#64748b; padding: 2rem;">No completions yet. Share theassessment to start tracking results!</p></div></div></main></div></div><script>// Assessment Questionsconst questions = [{id: 1,question: "When you first meet a potential
-donor, what do you typically start with?",description: "Think about your usual openingconversation in a first meeting.",options: [{ value: ’organization’, text: "Tell themabout your organization and its needs", description: "Start withyour mission, programs, and funding requirements", score: 1 },{ value: ’ask_interests’, text: "Ask abouttheir interests and what matters to them", description: "Showcuriosity about their passions and values first", score: 5 },{ value: ’mixed’, text: "Brief organizationintro, then ask about their interests", description: "Combineboth approaches in the conversation", score: 3 },{ value: ’unsure’, text: "I’m not sure - itvaries depending on the situation", description: "No consistentconversations", score: 2 }approach to opening]},{id:2,question: "How do you typically respond whensomeone shares their personal experiences or interests?",description: "Consider your natural reactionwhen donors open up about what they care about.",options: [{ value: ’connect_org’, text: "Immediatelyconnect it to how your organization addresses that issue",description: "Quick to make the link to your programs andservices", score: 2 },{ value: ’ask_more’, text: "Ask follow-upquestions to understand their perspective better", description:"Show genuine curiosity and let them share more", score: 5 },{ value: ’acknowledge_pivot’, text:"Acknowledge their interest, then pivot to your organization",description: "Brief recognition before steering to your agenda",score: 3 },{ value: ’listen_wait’, text: "Listencarefully and wait for natural opportunities to connect",description: "Patient approach, letting connections emergeorganically", score: 4 }]},{id: 3,question: "What questions do you find mosteffective in donor conversations?",description: "Think about the questions that
-generate the most meaningful responses.",options: [{ value: ’giving_capacity’, text: "Questionsabout their giving capacity and preferences", description: "Focuson donation amounts and giving history", score: 2 },{ value: ’personal_connection’, text:"Questions about their personal connection to the cause",description: "What first got you interested in this issue?",score: 5 },{ value: ’org_programs’, text: "Questionsabout which of your programs interest them most", description:"Present options and ask for their preferences", score: 3 },{ value: ’impact_vision’, text: "Questionsabout what impact they’d most like to see", description: "Whatwould make thebiggest difference in your view?", score: 4 }]},{id: 4,question: "How do you handle it when a donorseems hesitant or unengaged?",description: "Your approach when conversationsaren’t flowing naturally.",options: [{ value: ’push_harder’, text: "Present morecompelling information about your organization", description:"Share more statistics, stories, and urgent needs", score: 1 },{ value: ’step_back’, text: "Step back andask what’s really important to them", description: "Shift focusentirely to their interests and concerns", score: 5 },{ value: ’different_angle’, text: "Try adifferent angle or program that might interest them",description: "Present alternative ways they could get involved",score: 3 },{ value: ’end_gracefully’, text:"Acknowledge it might not be the right fit and end gracefully",description: "Respect their position and maintain therelationship", score: 4 }]},{id: 5,question: "What do you believe is the mostimportant factor in successful fundraising?",description: "Your core philosophy about whatmakes fundraising work.",options: [
-{ value: ’compelling_case’, text: "Having acompelling case for support", description: "Strongorganizational story and clear needs", score: 2 },{ value: ’genuine_relationships’, text:"Building genuine relationships based on shared values",description: "Authentic connections that go beyondtransactions", score: 5 },{ value: ’right_timing’, text: "Finding theright timing and approach for each donor", description:"Strategic timing and personalized cultivation", score: 4 },{ value: ’clear_impact’, text: "Demonstratingclear, measurable impact", description: "Concrete results andaccountability", score: 3 }]},{id: 6,question: "How often do you find yourselftalking versus listening in donor meetings?",description: "Be honest about the typicalbalance in your conversations.",options: [{ value: ’mostly_talking’, text: "I do mostof the talking - sharing information and making the case",description: "60-80% talking, presenting organizationalinformation", score: 1 },{ value: ’balanced’, text: "It’s fairlybalanced - we both share equally", description: "50/50 splitbetween talking and listening", score: 3 },{ value: ’mostly_listening’, text: "I do morelistening - asking questions and learning about them",description: "60-80% listening, focusing on their perspectives",score: 5 },{ value: ’varies’, text: "It varies greatlydepending on the donor and situation", description: "Noconsistent pattern in conversation balance", score: 2 }]},{id: 7,question: "When do you typically bring upspecific funding needs or donation amounts?",description: "The timing of your financial asksin the relationship.",options: [{ value: ’early_meeting’, text: "Early inthe first or second meeting", description: "Get the financial
-conversation started quickly", score: 2 },{ value: ’after_connection’, text: "Afterestablishing a connection to their interests", description:"Wait until you understand what motivates them", score: 5 },{ value: ’when_asked’, text: "When they askabout ways to get involved", description: "Let them initiate theconversation about giving", score: 4 },{ value: ’formal_proposal’, text: "In aformal proposal after several meetings", description: "Follow astructured cultivation timeline", score: 3 }]},{id: 8,question: "What’s your primary goal for a firstmeeting with a potential major donor?",description: "What you most hope to accomplishin that initial conversation.",options: [{ value: ’secure_gift’, text: "Secure asignificant gift or commitment", description: "Make the ask andclose the deal", score: 1 },{ value: ’understand_interests’, text:"Understand their interests and motivations", description:"Learn what they care about and why", score: 5 },{ value: ’present_opportunities’, text:"Present various giving opportunities", description: "Show themdifferent ways to get involved", score: 2 },{ value: ’build_rapport’, text: "Buildrapport and schedule a follow-up meeting", description:"Establish relationship foundation for future conversations",score: 4 }]}];// App Statelet currentQuestion = 0;let answers = {};let selectedAnswer = ’’;let isAdmin = false;// Initialize completions with better error handlinglet completions = [];try {completions =JSON.parse(localStorage.getItem(’fundraising_completions’) ||
-’[]’);} catch (error) {console.warn(’Error loading completions fromlocalStorage:’, error);completions = [];}// Navigation Functionsfunction showPage(pageId) {document.querySelectorAll(’.page’).forEach(page =>page.classList.remove(’active’));document.getElementById(pageId).classList.add(’active’);}function startAssessment() {currentQuestion = 0;answers = {};selectedAnswer = ’’;showPage(’assessment-page’);displayQuestion();}function displayQuestion() {const question = questions[currentQuestion];const progress = ((currentQuestion + 1) /questions.length) * 100;document.getElementById(’question-counter’).textContent = `Question ${currentQuestion + 1} of ${questions.length}`;document.getElementById(’progress-fill’).style.width= `${progress}%`;const questionCard =document.getElementById(’question-card’);questionCard.innerHTML = `<h2>${question.question}</h2>${question.description ? `<p style="color:#64748b; margin-bottom: 1.5rem;">${question.description}</p>` :’’}<div class="options">${question.options.map((option, index) => `<div class="option"onclick="selectAnswer(’${option.value}’)"><input type="radio" name="answer"value="${option.value}" ${selectedAnswer === option.value ?
-’checked’ : ’’}><span><div style="font-weight: 500;margin-bottom: 0.25rem;">${option.text}</div>${option.description ? `<divstyle="font-size: 0.875rem; color: #64748b;">${option.description}</div>` : ’’}</span></div>`).join(’’)}</div>`;updateNavigationButtons();}function selectAnswer(value) {selectedAnswer = value;document.querySelectorAll(’.option’).forEach(option=> option.classList.remove(’selected’));event.currentTarget.classList.add(’selected’);updateNavigationButtons();}function updateNavigationButtons() {document.getElementById(’prev-btn’).disabled =currentQuestion === 0;document.getElementById(’next-btn’).disabled = !selectedAnswer;document.getElementById(’next-btn’).textContent =currentQuestion === questions.length - 1 ? ’CompleteAssessment’ : ’Next’;}function nextQuestion() {if (!selectedAnswer) return;answers[currentQuestion] = selectedAnswer;if (currentQuestion < questions.length - 1) {currentQuestion++;selectedAnswer = answers[currentQuestion] || ’’;displayQuestion();} else {completeAssessment();}}
-function previousQuestion() {if (currentQuestion > 0) {currentQuestion--;selectedAnswer = answers[currentQuestion] || ’’;displayQuestion();}}// UPDATED COMPLETE ASSESSMENT FUNCTION WITH IMPROVEDANALYTICSfunction completeAssessment() {const score = calculateScore();const category = getScoreCategory(score);// Track completion with better dataconst completion = {id: Date.now(),score: score,timestamp: new Date().toISOString(),category: category.title,answers: {...answers},userAgent: navigator.userAgent.substring(0,50), // First 50 chars for privacyreferrer: document.referrer || ’Direct’,sessionId: Date.now() +Math.random().toString(36).substr(2, 9), // Unique sessionurl: window.location.href};// Get existing completionslet completions = [];try {completions =JSON.parse(localStorage.getItem(’fundraising_completions’) ||’[]’);} catch (error) {console.warn(’Error loading existingcompletions:’, error);completions = [];}// Add sample data if this is the first completion(for demo purposes)if (completions.length === 0) {const sampleCompletions = [{
-id: Date.now() - 86400000,score: 85,timestamp: new Date(Date.now() -86400000).toISOString(),category: ’Donor-Centered Champion’,answers: {},userAgent: ’Sample Data’,referrer: ’Direct’,sessionId: ’sample1’, url:window.location.href},{id: Date.now() - 172800000,score: 72,timestamp: new Date(Date.now() -172800000).toISOString(),category: ’Relationship Builder’,answers: {},userAgent: ’Sample Data’,referrer: ’Direct’,sessionId: ’sample2’, url:window.location.href},{id: Date.now() - 259200000,score: 45,timestamp: new Date(Date.now() -259200000).toISOString(),category: ’Transitioning Fundraiser’,answers: {},userAgent: ’Sample Data’,referrer: ’Direct’,sessionId: ’sample3’, url:window.location.href},{id: Date.now() - 345600000,score: 91,timestamp: new Date(Date.now() -345600000).toISOString(),category: ’Donor-Centered Champion’,answers: {},userAgent: ’Sample Data’,referrer: ’Shared Link’,sessionId: ’sample4’, url:window.location.href},
-{id: Date.now() - 432000000,score: 38,timestamp: new Date(Date.now() -432000000).toISOString(),category: ’Organization-CenteredApproach’,answers: {},userAgent: ’Sample Data’,referrer: ’Direct’,sessionId: ’sample5’,url: window.location.href}];completions = [...sampleCompletions];}// Add new completion to the beginning of the arraycompletions.unshift(completion);// Keep only last 100 completions to prevent storageissuesif (completions.length > 100) {completions = completions.slice(0, 100);}// Save back to localStorage with error handlingtry {localStorage.setItem(’fundraising_completions’,JSON.stringify(completions));console.log(’✅     Assessment completion savedsuccessfully:’, completion);}catch (error) {console.error(’❌     Error saving completion:’,error);// Fallback: keep only the new completion ifstorage is fulltry {localStorage.setItem(’fundraising_completions’,JSON.stringify([completion]));console.log(’⚠     Saved only currentcompletion due to storage limit’);} catch (fallbackError) {console.error(’❌     Critical error: Cannotsave to localStorage:’, fallbackError);
-}}// Also log summary for debuggingconsole.log(`📊     Total completions now: ${completions.length}`);console.log(`📈     Latest score: ${score}% (${category.title})`);// Display resultsdocument.getElementById(’final-score’).textContent =`${score}%`;document.getElementById(’score-category’).textContent = category.title;document.getElementById(’score-category’).className= category.color;document.getElementById(’score-description’).textContent = category.description;// Show success message in consolesetTimeout(() => {console.log(’🎉     Assessment completed and trackedsuccessfully!’);}, 100);showPage(’results-page’);}function calculateScore() {let totalScore = 0;let answeredQuestions = 0;Object.entries(answers).forEach(([questionIndex,answerValue]) => {const question =questions[parseInt(questionIndex)];const selectedOption =question.options.find(option => option.value === answerValue);if (selectedOption) {totalScore += selectedOption.score;answeredQuestions++;}});return answeredQuestions > 0 ?Math.round((totalScore / (answeredQuestions * 5)) * 100) : 0;}
-function getScoreCategory(score) {if (score >= 80) {return {title: ’Donor-Centered Champion’,color: ’text-green-600’,description: ’You have mastered the art ofdonor-centered fundraising. You consistently start withcuriosity about your donors and build genuine relationships.’};} else if (score >= 60) {return {title: ’Relationship Builder’,color: ’text-blue-600’,description: ’You understand the importanceof donor relationships and often put their interests first. Withsome refinement, you can become even more effective.’};} else if (score >= 40) {return {title: ’Transitioning Fundraiser’,color: ’text-yellow-600’,description: ’You are beginning to shiftfrom organization-centered to donor-centered approaches. Focuson asking more questions and listening more deeply.’};} else {return {title: ’Organization-Centered Approach’,color: ’text-red-600’,description: ’You tend to lead with yourorganization\’s needs rather than donor interests. Learning tostart withcuriosity will transform your fundraising success.’};}}// Admin Functionsfunction adminLogin() {const password = prompt(’Enter admin password:’);if (password === ’admin123’) {isAdmin = true;updateAnalytics();showPage(’analytics-page’);} else {alert(’Incorrect password’);}
-}function logoutAdmin() {isAdmin = false;showPage(’home-page’);}function updateAnalytics() {// Load fresh data from localStoragelet completions = [];try {completions =JSON.parse(localStorage.getItem(’fundraising_completions’) ||’[]’);} catch (error) {console.warn(’Error loading analytics data:’,error);completions = [];}const totalCompletions = completions.length;const averageScore = totalCompletions > 0? Math.round(completions.reduce((sum, c) => sum+ c.score, 0) / totalCompletions): 0;const thisMonth = completions.filter(c => {const completionDate = new Date(c.timestamp);const now = new Date();return completionDate.getMonth() ===now.getMonth() &&completionDate.getFullYear() ===now.getFullYear();}).length;const categoryCount = {};completions.forEach(c => {categoryCount[c.category] =(categoryCount[c.category] || 0) + 1;});const topCategory = Object.entries(categoryCount).sort(([,a], [,b]) => b - a)[0]?.[0]?.split(’ ’)[0] || ’N/A’;document.getElementById(’total-completions’).textContent = totalCompletions;
-document.getElementById(’average-score’).textContent= `${averageScore}%`;document.getElementById(’month-completions’).textContent = thisMonth;document.getElementById(’top-category’).textContent= topCategory;const completionsList =document.getElementById(’completions-list’);if (totalCompletions === 0) {completionsList.innerHTML = `<p style="text-align: center; color:#64748b; padding: 2rem;">No completions yet. Share the assessmentto start tracking results!</p>`;} else {completionsList.innerHTML = completions.slice(0,10).map(completion => `<div class="completion-item"><div class="completion-score">${completion.score}%</div><div style="flex: 1;">class="completion-category">$<div{completion.category}</div><divclass="completion-date">${newDate(completion.timestamp).toLocaleDateString()} ${newDate(completion.timestamp).toLocaleTimeString()}</div>${completion.referrer &&completion.referrer !== ’Direct’ ? `<div style="font-size:0.75rem; color: #9ca3af;">via ${completion.referrer}</div>` :’’}</div></div>`).join(’’);}console.log(’📊     Analytics updated:’, {total: totalCompletions,average: averageScore,thisMonth: thisMonth,topCategory: topCategory});}// Utility Functions
-function shareApp() {const url = window.location.href;const title = ’Fundraising Assessment Pro’;const text = ’Transform your fundraising approachwith this donor-centered assessment by Mark Dobosz’;if (navigator.share) {navigator.share({title: title,text: text,url: url}).then(() => {console.log(’✅     App shared successfully’);}).catch((error) => {console.log(’Share cancelled or failed:’,error);fallbackShare(url);});} else {fallbackShare(url);}}function fallbackShare(url) {if (navigator.clipboard) {navigator.clipboard.writeText(url).then(() => {alert(’✅     App URL copied to clipboard!\n\nShare this link: ’ + url);console.log(’✅     URL copied to clipboard’);}).catch(() => {promptShare(url);});} else {promptShare(url);}}function promptShare(url) {const result = prompt(’Copy this URL to share theFundraising Assessment:’, url);if (result !== null) {console.log(’📋     URL provided for manualcopying’);}}// Initialize app
-document.addEventListener(’DOMContentLoaded’, function(){showPage(’home-page’);console.log(’🚀     Fundraising Assessment Pro loadedAdmin password: admin123’);successfully’);console.log(’👤console.log(’📊Analytics tracking: Active’);});// Debug function for testingfunction debugInfo() {const completions =JSON.parse(localStorage.getItem(’fundraising_completions’) ||’[]’);console.log(’🔍     Debug Info:’, {totalCompletions:completions.length,latestCompletion:completions[0],storageSize: JSON.stringify(completions).length,url: window.location.href});}// Make debug function available globallywindow.debugInfo = debugInfo;</script></body></html>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundraising Assessment Pro</title>
+    <meta name="description" content="Transform your fundraising approach with donor-centered strategies. Created by Mark Dobosz.">
+    <meta name="author" content="Mark Dobosz">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8fafc;
+        }
+
+        .app {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .header-info {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+            border-radius: 1rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:disabled {
+            background: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #d1d5db;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .btn-secondary:disabled {
+            background: #f3f4f6;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .btn-admin {
+            background: #6b7280;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-admin:hover {
+            background: #4b5563;
+        }
+
+        .btn-share {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-share:hover {
+            background: #059669;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+
+        .stat-card h3 {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .recent-completions {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .completions-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .completion-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            background: #f8fafc;
+        }
+
+        .completion-score {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3b82f6;
+            min-width: 4rem;
+        }
+
+        .completion-category {
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        .completion-date {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        .footer {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.875rem;
+            margin-top: auto;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: #e2e8f0;
+            border-radius: 0.25rem;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+
+        .question-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .question-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: white;
+        }
+
+        .option:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+        }
+
+        .option.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .option input[type="radio"] {
+            margin-top: 0.125rem;
+        }
+
+        .option span {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .results-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 2rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .score-circle {
+            width: 8rem;
+            height: 8rem;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            position: relative;
+        }
+
+        .score-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .results-card h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .text-green-600 { color: #059669; }
+        .text-blue-600 { color: #2563eb; }
+        .text-yellow-600 { color: #d97706; }
+        .text-red-600 { color: #dc2626; }
+
+        .recommendations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .recommendation-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+        }
+
+        .recommendation-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .recommendation-card ul {
+            margin-top: 1rem;
+            padding-left: 1.25rem;
+        }
+
+        .recommendation-card li {
+            margin-bottom: 0.5rem;
+            color: #64748b;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .header-buttons {
+                justify-content: center;
+            }
+
+            .analytics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .recommendations {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <header class="header">
+                <h1>Fundraising Assessment Pro</h1>
+                <div class="header-buttons">
+                    <button onclick="shareApp()" class="btn-share">📤 Share</button>
+                    <button onclick="adminLogin()" class="btn-admin">🔐 Admin</button>
+                </div>
+            </header>
+            
+            <main class="main-content">
+                <div class="hero">
+                    <h2>Stop Leading with Your Organization's Needs</h2>
+                    <p>Transform your fundraising approach by starting with curiosity about your donors. Learn to connect authentically and build lasting relationships that benefit both your cause and your supporters.</p>
+                    <button onclick="startAssessment()" class="btn-primary">Take Assessment</button>
+                </div>
+                
+                <div class="features">
+                    <div class="feature-card">
+                        <h3>🎯 Donor-Centered Approach</h3>
+                        <p>Learn to connect with donors through genuine curiosity about their interests and passions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🤝 Relationship Building</h3>
+                        <p>Discover how to build meaningful relationships that go beyond transactional interactions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Strategic Assessment</h3>
+                        <p>Evaluate your current fundraising approach and identify areas for improvement.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📈 Proven Results</h3>
+                        <p>Apply evidence-based strategies that successful fundraisers use to engage donors.</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; background: #f1f5f9; padding: 2rem; border-radius: 1rem; margin-top: 2rem;">
+                    <blockquote style="font-size: 1.5rem; font-style: italic; color: #1e293b; margin-bottom: 1rem;">
+                        "What if you started with curiosity about the person you're talking to instead?"
+                    </blockquote>
+                    <p style="color: #64748b; margin-bottom: 1.5rem;">
+                        By the time you talk about what your organization does, people are already thinking about 
+                        how they might want to be involved—because the conversation started with their interests, not your needs.
+                    </p>
+                    <button onclick="startAssessment()" class="btn-primary">Start Your Assessment</button>
+                </div>
+            </main>
+            
+            <footer class="footer">
+                <p>© 2025 Mark Dobosz. All rights reserved.</p>
+            </footer>
+        </div>
+
+        <!-- Assessment Page -->
+        <div id="assessment-page" class="page">
+            <header class="header">
+                <h1>Fundraising Assessment</h1>
+                <div class="header-info">
+                    <span id="question-counter">Question 1 of 3</span>
+                </div>
+            </header>
+            
+            <main class="main-content">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill" style="width: 33%"></div>
+                </div>
+                
+                <div id="question-card" class="question-card">
+                    <!-- Question content will be inserted here -->
+                </div>
+                
+                <div class="navigation">
+                    <button id="prev-btn" onclick="previousQuestion()" class="btn-secondary" disabled>← Previous</button>
+                    <button id="next-btn" onclick="nextQuestion()" class="btn-primary" disabled>Next →</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Results Page -->
+        <div id="results-page" class="page">
+            <header class="header">
+                <h1>Your Assessment Results</h1>
+                <div class="header-buttons">
+                    <button onclick="shareApp()" class="btn-share">📤 Share</button>
+                    <button onclick="showPage('home-page')" class="btn-secondary">← Home</button>
+                </div>
+            </header>
+            
+            <main class="main-content">
+                <div class="results-card">
+                    <div class="score-circle">
+                        <div id="final-score" class="score-number">0%</div>
+                    </div>
+                    <h2 id="score-category" class="text-blue-600">Assessment Complete</h2>
+                    <p id="score-description">Based on your responses, here's how you can improve your fundraising approach:</p>
+                </div>
+                
+                <div class="recommendations">
+                    <div class="recommendation-card">
+                        <h3>🎯 Start with Curiosity</h3>
+                        <p>Begin every donor conversation by asking about their interests and what matters to them personally.</p>
+                        <ul>
+                            <li>Ask: "What first got you interested in this issue?"</li>
+                            <li>Listen for personal stories and experiences</li>
+                            <li>Show genuine curiosity about their perspective</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="recommendation-card">
+                        <h3>👂 Listen More, Talk Less</h3>
+                        <p>Aim for 70% listening and 30% talking in your donor conversations.</p>
+                        <ul>
+                            <li>Ask follow-up questions to understand deeper</li>
+                            <li>Resist the urge to immediately connect to your organization</li>
+                            <li>Let donors share their full story before responding</li>
+                        </ul>
+                    </div>
+
+                    <div class="recommendation-card">
+                        <h3>🤝 Connect Authentically</h3>
+                        <p>Make connections between donor interests and your work naturally, not forcefully.</p>
+                        <ul>
+                            <li>Wait for organic opportunities to share your work</li>
+                            <li>Focus on shared values rather than organizational needs</li>
+                            <li>Let the connection emerge from their interests</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="actions">
+                    <button onclick="startAssessment()" class="btn-primary">🔄 Retake Assessment</button>
+                    <button onclick="shareApp()" class="btn-secondary">📤 Share Results</button>
+                </div>
+            </main>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics-page" class="page">
+            <header class="header">
+                <h1>📊 Analytics Dashboard</h1>
+                <div class="header-buttons">
+                    <button onclick="refreshAnalytics()" class="btn-secondary">🔄 Refresh</button>
+                    <button onclick="showPage('home-page')" class="btn-secondary">← Home</button>
+                    <button onclick="logoutAdmin()" class="btn-admin">🚪 Logout</button>
+                </div>
+            </header>
+            
+            <main class="main-content">
+                <div class="analytics-grid">
+                    <div class="stat-card">
+                        <h3>Total Completions</h3>
+                        <div id="total-completions" class="stat-number">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Average Score</h3>
+                        <div id="average-score" class="stat-number">0%</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>This Month</h3>
+                        <div id="month-completions" class="stat-number">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Top Category</h3>
+                        <div id="top-category" class="stat-number" style="font-size: 1rem;">N/A</div>
+                    </div>
+                </div>
+                
+                <div class="recent-completions">
+                    <h3>📈 Recent Completions</h3>
+                    <div id="completions-list" class="completions-list">
+                        <p style="text-align: center; color: #64748b; padding: 2rem;">
+                            No completions yet. Share the assessment to start tracking results!
+                        </p>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Assessment Questions (simplified for testing)
+        const questions = [
+            {
+                id: 1,
+                question: "When you first meet a potential donor, what do you typically start with?",
+                options: [
+                    { value: 'organization', text: "Tell them about your organization and its needs", score: 1 },
+                    { value: 'ask_interests', text: "Ask about their interests and what matters to them", score: 5 },
+                    { value: 'mixed', text: "Brief organization intro, then ask about their interests", score: 3 }
+                ]
+            },
+            {
+                id: 2,
+                question: "How do you typically respond when someone shares their personal experiences?",
+                options: [
+                    { value: 'connect_org', text: "Immediately connect it to how your organization addresses that issue", score: 2 },
+                    { value: 'ask_more', text: "Ask follow-up questions to understand their perspective better", score: 5 },
+                    { value: 'listen_wait', text: "Listen carefully and wait for natural opportunities to connect", score: 4 }
+                ]
+            },
+            {
+                id: 3,
+                question: "What questions do you find most effective in donor conversations?",
+                options: [
+                    { value: 'giving_capacity', text: "Questions about their giving capacity and preferences", score: 2 },
+                    { value: 'personal_connection', text: "Questions about their personal connection to the cause", score: 5 },
+                    { value: 'org_programs', text: "Questions about which of your programs interest them most", score: 3 }
+                ]
+            }
+        ];
+
+        // App State
+        let currentQuestion = 0;
+        let answers = {};
+        let selectedAnswer = '';
+        let isAdmin = false;
+
+        // Initialize completions
+        let completions = [];
+        try {
+            completions = JSON.parse(localStorage.getItem('fundraising_completions') || '[]');
+        } catch (error) {
+            completions = [];
+        }
+
+        // Navigation Functions
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        function startAssessment() {
+            currentQuestion = 0;
+            answers = {};
+            selectedAnswer = '';
+            showPage('assessment-page');
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = questions[currentQuestion];
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            
+            document.getElementById('question-counter').textContent = `Question ${currentQuestion + 1} of ${questions.length}`;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+            
+            const questionCard = document.getElementById('question-card');
+            questionCard.innerHTML = `
+                <h2>${question.question}</h2>
+                <div class="options">
+                    ${question.options.map((option, index) => `
+                        <div class="option" onclick="selectAnswer('${option.value}')">
+                            <input type="radio" name="answer" value="${option.value}" ${selectedAnswer === option.value ? 'checked' : ''}>
+                            <span>
+                                <div style="font-weight: 500;">${option.text}</div>
+                            </span>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            updateNavigationButtons();
+        }
+
+        function selectAnswer(value) {
+            selectedAnswer = value;
+            document.querySelectorAll('.option').forEach(option => option.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            document.getElementById('prev-btn').disabled = currentQuestion === 0;
+            document.getElementById('next-btn').disabled = !selectedAnswer;
+            document.getElementById('next-btn').textContent = currentQuestion === questions.length - 1 ? 'Complete Assessment ✅' : 'Next →';
+        }
+
+        function nextQuestion() {
+            if (!selectedAnswer) return;
+            
+            answers[currentQuestion] = selectedAnswer;
+            
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                selectedAnswer = answers[currentQuestion] || '';
+                displayQuestion();
+            } else {
+                completeAssessment();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                selectedAnswer = answers[currentQuestion] || '';
+                displayQuestion();
+            }
+        }
+
+        function completeAssessment() {
+            const score = calculateScore();
+            const category = getScoreCategory(score);
+            
+            // Track completion
+            const completion = {
+                id: Date.now(),
+                score: score,
+                timestamp: new Date().toISOString(),
+                category: category.title,
+                answers: {...answers}
+            };
+            
+            // Get existing completions
+            let completions = [];
+            try {
+                completions = JSON.parse(localStorage.getItem('fundraising_completions') || '[]');
+            } catch (error) {
+                completions = [];
+            }
+            
+            // Add sample data if first completion
+            if (completions.length === 0) {
+                const sampleCompletions = [
+                    {
+                        id: Date.now() - 86400000,
+                        score: 85,
+                        timestamp: new Date(Date.now() - 86400000).toISOString(),
+                        category: 'Donor-Centered Champion',
+                        answers: {}
+                    },
+                    {
+                        id: Date.now() - 172800000,
+                        score: 72,
+                        timestamp: new Date(Date.now() - 172800000).toISOString(),
+                        category: 'Relationship Builder',
+                        answers: {}
+                    },
+                    {
+                        id: Date.now() - 259200000,
+                        score: 45,
+                        timestamp: new Date(Date.now() - 259200000).toISOString(),
+                        category: 'Transitioning Fundraiser',
+                        answers: {}
+                    }
+                ];
+                
+                completions = [...sampleCompletions];
+            }
+            
+            // Add new completion
+            completions.unshift(completion);
+            
+            // Save
+            try {
+                localStorage.setItem('fundraising_completions', JSON.stringify(completions));
+                console.log('✅ Assessment completion saved');
+            } catch (error) {
+                console.error('❌ Error saving completion:', error);
+            }
+            
+            // Display results
+            document.getElementById('final-score').textContent = `${score}%`;
+            document.getElementById('score-category').textContent = category.title;
+            document.getElementById('score-category').className = category.color;
+            document.getElementById('score-description').textContent = category.description;
+            
+            showPage('results-page');
+        }
+
+        function calculateScore() {
+            let totalScore = 0;
+            let answeredQuestions = 0;
+
+            Object.entries(answers).forEach(([questionIndex, answerValue]) => {
+                const question = questions[parseInt(questionIndex)];
+                const selectedOption = question.options.find(option => option.value === answerValue);
+                if (selectedOption) {
+                    totalScore += selectedOption.score;
+                    answeredQuestions++;
+                }
+            });
+
+            return answeredQuestions > 0 ? Math.round((totalScore / (answeredQuestions * 5)) * 100) : 0;
+        }
+
+        function getScoreCategory(score) {
+            if (score >= 80) {
+                return {
+                    title: 'Donor-Centered Champion',
+                    color: 'text-green-600',
+                    description: 'You have mastered the art of donor-centered fundraising. You consistently start with curiosity about your donors.'
+                };
+            } else if (score >= 60) {
+                return {
+                    title: 'Relationship Builder',
+                    color: 'text-blue-600',
+                    description: 'You understand the importance of donor relationships and often put their interests first.'
+                };
+            } else if (score >= 40) {
+                return {
+                    title: 'Transitioning Fundraiser',
+                    color: 'text-yellow-600',
+                    description: 'You are beginning to shift from organization-centered to donor-centered approaches.'
+                };
+            } else {
+                return {
+                    title: 'Organization-Centered Approach',
+                    color: 'text-red-600',
+                    description: 'You tend to lead with your organization\'s needs rather than donor interests.'
+                };
+            }
+        }
+
+        // ADMIN FUNCTIONS - NOW WORKING!
+        function adminLogin() {
+            const password = prompt('🔐 Enter admin password:');
+            if (password === 'admin123') {
+                isAdmin = true;
+                updateAnalytics();
+                showPage('analytics-page');
+                console.log('🔓 Admin access granted');
+            } else {
+                alert('❌ Incorrect password');
+            }
+        }
+
+        function logoutAdmin() {
+            isAdmin = false;
+            showPage('home-page');
+            console.log('🔒 Admin logged out');
+        }
+
+        function refreshAnalytics() {
+            console.log('🔄 Refreshing analytics...');
+            
+            const refreshBtn = event.target;
+            const originalText = refreshBtn.innerHTML;
+            
+            refreshBtn.innerHTML = '🔄 Refreshing...';
+            refreshBtn.disabled = true;
+            
+            updateAnalytics();
+            
+            setTimeout(() => {
+                refreshBtn.innerHTML = '✅ Refreshed!';
+                setTimeout(() => {
+                    refreshBtn.innerHTML = originalText;
+                    refreshBtn.disabled = false;
+                }, 1000);
+            }, 500);
+        }
+
+        function updateAnalytics() {
+            let completions = [];
+            try {
+                completions = JSON.parse(localStorage.getItem('fundraising_completions') || '[]');
+            } catch (error) {
+                completions = [];
+            }
+
+            const totalCompletions = completions.length;
+            const averageScore = totalCompletions > 0 
+                ? Math.round(completions.reduce((sum, c) => sum + c.score, 0) / totalCompletions)
+                : 0;
+            
+            const thisMonth = completions.filter(c => {
+                const completionDate = new Date(c.timestamp);
+                const now = new Date();
+                return completionDate.getMonth() === now.getMonth() && 
+                       completionDate.getFullYear() === now.getFullYear();
+            }).length;
+
+            const categoryCount = {};
+            completions.forEach(c => {
+                categoryCount[c.category] = (categoryCount[c.category] || 0) + 1;
+            });
+            
+            const topCategory = Object.entries(categoryCount)
+                .sort(([,a], [,b]) => b - a)[0]?.[0]?.split(' ')[0] || 'N/A';
+
+            // Update display
+            document.getElementById('total-completions').textContent = totalCompletions;
+            document.getElementById('average-score').textContent = `${averageScore}%`;
+            document.getElementById('month-completions').textContent = thisMonth;
+            document.getElementById('top-category').textContent = topCategory;
+
+            const completionsList = document.getElementById('completions-list');
+            if (totalCompletions === 0) {
+                completionsList.innerHTML = `
+                    <p style="text-align: center; color: #64748b; padding: 2rem;">
+                        No completions yet. Take the assessment to see data!
+                    </p>
+                `;
+            } else {
+                completionsList.innerHTML = completions.slice(0, 10).map(completion => `
+                    <div class="completion-item">
+                        <div class="completion-score">${completion.score}%</div>
+                        <div style="flex: 1;">
+                            <div class="completion-category">${completion.category}</div>
+                            <div class="completion-date">
+                                ${new Date(completion.timestamp).toLocaleDateString()} 
+                                ${new Date(completion.timestamp).toLocaleTimeString()}
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            console.log('📊 Analytics updated:', {
+                total: totalCompletions,
+                average: averageScore,
+                thisMonth: thisMonth,
+                topCategory: topCategory
+            });
+        }
+
+        // Share function
+        function shareApp() {
+            const url = window.location.href;
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('✅ App URL copied to clipboard!');
+                }).catch(() => {
+                    prompt('Copy this URL to share:', url);
+                });
+            } else {
+                prompt('Copy this URL to share:', url);
+            }
+        }
+
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            showPage('home-page');
+            console.log('🚀 Fundraising Assessment Pro loaded successfully');
+            console.log('👤 Admin password: admin123');
+            console.log('📊 Analytics tracking: Active');
+        });
+    </script>
+</body>
+</html>
+  <script  src="./script.js"></script>
+
+</body>
+</html>

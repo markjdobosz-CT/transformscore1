@@ -1,25 +1,852 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="https://layout.dev/assets/templates/layout.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundraising Assessment Pro</title>
-    <meta name="description" content="Transform your fundraising approach with donor-centered strategies. Created by Mark Dobosz." />
-    <meta name="author" content="Mark Dobosz" />
-
-    <meta property="og:title" content="Fundraising Assessment Pro" />
-    <meta property="og:description" content="Transform your fundraising approach with donor-centered strategies. Created by Mark Dobosz." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://layout.dev/assets/images/og-image.jpg" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@layout_dev" />
-    <meta name="twitter:image" content="https://layout.dev/assets/images/og-image.jpg" />
-
-  </head>
-  <body>
+    <meta name="description" content="Transform your fundraising approach with donor-centered strategies. Created by Mark Dobosz.">
+    <meta name="author" content="Mark Dobosz">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- React and React DOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+        
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .radio-option {
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .radio-option:hover {
+            border-color: #d1d5db;
+        }
+        
+        .radio-option.selected {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 0.5rem;
+            background: #e5e7eb;
+            border-radius: 0.25rem;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #2563eb;
+            transition: width 0.3s;
+        }
+        
+        .sidebar {
+            width: 16rem;
+            background: #f8fafc;
+            border-right: 1px solid #e5e7eb;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        
+        .main-content {
+            margin-left: 16rem;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s;
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .score-excellent { color: #16a34a; }
+        .score-good { color: #2563eb; }
+        .score-developing { color: #ca8a04; }
+        .score-needs-improvement { color: #dc2626; }
+    </style>
+</head>
+<body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    
+    <script type="text/babel">
+        const { useState, useEffect, createElement: h } = React;
+        
+        // Assessment Data
+        const assessmentQuestions = [
+            {
+                id: 1,
+                question: "When you first meet a potential donor, what do you typically start with?",
+                description: "Think about your usual opening conversation in a first meeting.",
+                category: 'approach',
+                options: [
+                    {
+                        value: 'organization',
+                        text: "Tell them about your organization and its needs",
+                        description: "Start with your mission, programs, and funding requirements",
+                        score: 1
+                    },
+                    {
+                        value: 'ask_interests',
+                        text: "Ask about their interests and what matters to them",
+                        description: "Show curiosity about their passions and values first",
+                        score: 5
+                    },
+                    {
+                        value: 'mixed',
+                        text: "Brief organization intro, then ask about their interests",
+                        description: "Combine both approaches in the conversation",
+                        score: 3
+                    },
+                    {
+                        value: 'unsure',
+                        text: "I'm not sure - it varies depending on the situation",
+                        description: "No consistent approach to opening conversations",
+                        score: 2
+                    }
+                ]
+            },
+            {
+                id: 2,
+                question: "How do you typically respond when someone shares their personal experiences or interests?",
+                description: "Consider your natural reaction when donors open up about what they care about.",
+                category: 'listening',
+                options: [
+                    {
+                        value: 'connect_org',
+                        text: "Immediately connect it to how your organization addresses that issue",
+                        description: "Quick to make the link to your programs and services",
+                        score: 2
+                    },
+                    {
+                        value: 'ask_more',
+                        text: "Ask follow-up questions to understand their perspective better",
+                        description: "Show genuine curiosity and let them share more",
+                        score: 5
+                    },
+                    {
+                        value: 'acknowledge_pivot',
+                        text: "Acknowledge their interest, then pivot to your organization",
+                        description: "Brief recognition before steering to your agenda",
+                        score: 3
+                    },
+                    {
+                        value: 'listen_wait',
+                        text: "Listen carefully and wait for natural opportunities to connect",
+                        description: "Patient approach, letting connections emerge organically",
+                        score: 4
+                    }
+                ]
+            },
+            {
+                id: 3,
+                question: "What questions do you find most effective in donor conversations?",
+                description: "Think about the questions that generate the most meaningful responses.",
+                category: 'strategy',
+                options: [
+                    {
+                        value: 'giving_capacity',
+                        text: "Questions about their giving capacity and preferences",
+                        description: "Focus on donation amounts and giving history",
+                        score: 2
+                    },
+                    {
+                        value: 'personal_connection',
+                        text: "Questions about their personal connection to the cause",
+                        description: "What first got you interested in this issue?",
+                        score: 5
+                    },
+                    {
+                        value: 'org_programs',
+                        text: "Questions about which of your programs interest them most",
+                        description: "Present options and ask for their preferences",
+                        score: 3
+                    },
+                    {
+                        value: 'impact_vision',
+                        text: "Questions about what impact they'd most like to see",
+                        description: "What would make the biggest difference in your view?",
+                        score: 4
+                    }
+                ]
+            },
+            {
+                id: 4,
+                question: "How do you handle it when a donor seems hesitant or unengaged?",
+                description: "Your approach when conversations aren't flowing naturally.",
+                category: 'relationship',
+                options: [
+                    {
+                        value: 'push_harder',
+                        text: "Present more compelling information about your organization",
+                        description: "Share more statistics, stories, and urgent needs",
+                        score: 1
+                    },
+                    {
+                        value: 'step_back',
+                        text: "Step back and ask what's really important to them",
+                        description: "Shift focus entirely to their interests and concerns",
+                        score: 5
+                    },
+                    {
+                        value: 'different_angle',
+                        text: "Try a different angle or program that might interest them",
+                        description: "Present alternative ways they could get involved",
+                        score: 3
+                    },
+                    {
+                        value: 'end_gracefully',
+                        text: "Acknowledge it might not be the right fit and end gracefully",
+                        description: "Respect their position and maintain the relationship",
+                        score: 4
+                    }
+                ]
+            },
+            {
+                id: 5,
+                question: "What do you believe is the most important factor in successful fundraising?",
+                description: "Your core philosophy about what makes fundraising work.",
+                category: 'approach',
+                options: [
+                    {
+                        value: 'compelling_case',
+                        text: "Having a compelling case for support",
+                        description: "Strong organizational story and clear needs",
+                        score: 2
+                    },
+                    {
+                        value: 'genuine_relationships',
+                        text: "Building genuine relationships based on shared values",
+                        description: "Authentic connections that go beyond transactions",
+                        score: 5
+                    },
+                    {
+                        value: 'right_timing',
+                        text: "Finding the right timing and approach for each donor",
+                        description: "Strategic timing and personalized cultivation",
+                        score: 4
+                    },
+                    {
+                        value: 'clear_impact',
+                        text: "Demonstrating clear, measurable impact",
+                        description: "Concrete results and accountability",
+                        score: 3
+                    }
+                ]
+            },
+            {
+                id: 6,
+                question: "How often do you find yourself talking versus listening in donor meetings?",
+                description: "Be honest about the typical balance in your conversations.",
+                category: 'listening',
+                options: [
+                    {
+                        value: 'mostly_talking',
+                        text: "I do most of the talking - sharing information and making the case",
+                        description: "60-80% talking, presenting organizational information",
+                        score: 1
+                    },
+                    {
+                        value: 'balanced',
+                        text: "It's fairly balanced - we both share equally",
+                        description: "50/50 split between talking and listening",
+                        score: 3
+                    },
+                    {
+                        value: 'mostly_listening',
+                        text: "I do more listening - asking questions and learning about them",
+                        description: "60-80% listening, focusing on their perspectives",
+                        score: 5
+                    },
+                    {
+                        value: 'varies',
+                        text: "It varies greatly depending on the donor and situation",
+                        description: "No consistent pattern in conversation balance",
+                        score: 2
+                    }
+                ]
+            },
+            {
+                id: 7,
+                question: "When do you typically bring up specific funding needs or donation amounts?",
+                description: "The timing of your financial asks in the relationship.",
+                category: 'strategy',
+                options: [
+                    {
+                        value: 'early_meeting',
+                        text: "Early in the first or second meeting",
+                        description: "Get the financial conversation started quickly",
+                        score: 2
+                    },
+                    {
+                        value: 'after_connection',
+                        text: "After establishing a connection to their interests",
+                        description: "Wait until you understand what motivates them",
+                        score: 5
+                    },
+                    {
+                        value: 'when_asked',
+                        text: "When they ask about ways to get involved",
+                        description: "Let them initiate the conversation about giving",
+                        score: 4
+                    },
+                    {
+                        value: 'formal_proposal',
+                        text: "In a formal proposal after several meetings",
+                        description: "Follow a structured cultivation timeline",
+                        score: 3
+                    }
+                ]
+            },
+            {
+                id: 8,
+                question: "What's your primary goal for a first meeting with a potential major donor?",
+                description: "What you most hope to accomplish in that initial conversation.",
+                category: 'relationship',
+                options: [
+                    {
+                        value: 'secure_gift',
+                        text: "Secure a significant gift or commitment",
+                        description: "Make the ask and close the deal",
+                        score: 1
+                    },
+                    {
+                        value: 'understand_interests',
+                        text: "Understand their interests and motivations",
+                        description: "Learn what they care about and why",
+                        score: 5
+                    },
+                    {
+                        value: 'present_opportunities',
+                        text: "Present various giving opportunities",
+                        description: "Show them different ways to get involved",
+                        score: 2
+                    },
+                    {
+                        value: 'build_rapport',
+                        text: "Build rapport and schedule a follow-up meeting",
+                        description: "Establish relationship foundation for future conversations",
+                        score: 4
+                    }
+                ]
+            }
+        ];
+        
+        const calculateScore = (answers) => {
+            let totalScore = 0;
+            let answeredQuestions = 0;
+            
+            Object.entries(answers).forEach(([questionIndex, answerValue]) => {
+                const question = assessmentQuestions[parseInt(questionIndex)];
+                const selectedOption = question.options.find(option => option.value === answerValue);
+                if (selectedOption) {
+                    totalScore += selectedOption.score;
+                    answeredQuestions++;
+                }
+            });
+            
+            return answeredQuestions > 0 ? Math.round((totalScore / (answeredQuestions * 5)) * 100) : 0;
+        };
+        
+        const getScoreCategory = (score) => {
+            if (score >= 80) {
+                return {
+                    category: 'excellent',
+                    title: 'Donor-Centered Champion',
+                    description: 'You have mastered the art of donor-centered fundraising. You consistently start with curiosity about your donors and build genuine relationships.',
+                    color: 'score-excellent'
+                };
+            } else if (score >= 60) {
+                return {
+                    category: 'good',
+                    title: 'Relationship Builder',
+                    description: 'You understand the importance of donor relationships and often put their interests first. With some refinement, you can become even more effective.',
+                    color: 'score-good'
+                };
+            } else if (score >= 40) {
+                return {
+                    category: 'developing',
+                    title: 'Transitioning Fundraiser',
+                    description: 'You are beginning to shift from organization-centered to donor-centered approaches. Focus on asking more questions and listening more deeply.',
+                    color: 'score-developing'
+                };
+            } else {
+                return {
+                    category: 'needs_improvement',
+                    title: 'Organization-Centered Approach',
+                    description: 'You tend to lead with your organization\'s needs rather than donor interests. Learning to start with curiosity will transform your fundraising success.',
+                    color: 'score-needs-improvement'
+                };
+            }
+        };
+        
+        // Components
+        const Sidebar = ({ currentPage, onPageChange, isOpen, onToggle }) => {
+            const menuItems = [
+                { id: 'home', label: 'Home', icon: 'Home' },
+                { id: 'assessment', label: 'Assessment', icon: 'FileQuestion' },
+                { id: 'results', label: 'Results', icon: 'BarChart3' },
+                { id: 'resources', label: 'Resources', icon: 'BookOpen' }
+            ];
+            
+            return h('div', { className: `sidebar ${isOpen ? 'open' : ''}` },
+                h('div', { className: 'p-6' },
+                    h('h1', { className: 'text-xl font-bold text-gray-800 mb-8' }, 'Fundraising Pro'),
+                    h('nav', { className: 'space-y-2' },
+                        menuItems.map(item => 
+                            h('button', {
+                                key: item.id,
+                                className: `w-full text-left px-4 py-2 rounded-lg transition-colors ${
+                                    currentPage === item.id 
+                                        ? 'bg-blue-100 text-blue-700 font-medium' 
+                                        : 'text-gray-600 hover:bg-gray-100'
+                                }`,
+                                onClick: () => onPageChange(item.id)
+                            }, item.label)
+                        )
+                    )
+                )
+            );
+        };
+        
+        const HomePage = () => {
+            return h('div', { className: 'fade-in' },
+                h('div', { className: 'max-w-4xl mx-auto' },
+                    h('div', { className: 'text-center mb-12' },
+                        h('h1', { className: 'text-5xl font-bold text-gray-900 mb-6' }, 
+                            'Fundraising Assessment Pro'
+                        ),
+                        h('p', { className: 'text-xl text-gray-600 mb-8' }, 
+                            'Transform your fundraising approach with donor-centered strategies'
+                        ),
+                        h('div', { className: 'text-sm text-gray-500' }, 
+                            'Created by Mark Dobosz'
+                        )
+                    ),
+                    
+                    h('div', { className: 'grid md:grid-cols-3 gap-8 mb-12' },
+                        h('div', { className: 'card p-6 text-center' },
+                            h('div', { className: 'text-blue-600 mb-4' },
+                                h('div', { className: 'w-12 h-12 mx-auto bg-blue-100 rounded-full flex items-center justify-center' },
+                                    '📊'
+                                )
+                            ),
+                            h('h3', { className: 'text-lg font-semibold mb-2' }, 'Self-Assessment'),
+                            h('p', { className: 'text-gray-600' }, 'Evaluate your current fundraising approach and identify areas for improvement')
+                        ),
+                        
+                        h('div', { className: 'card p-6 text-center' },
+                            h('div', { className: 'text-green-600 mb-4' },
+                                h('div', { className: 'w-12 h-12 mx-auto bg-green-100 rounded-full flex items-center justify-center' },
+                                    '🎯'
+                                )
+                            ),
+                            h('h3', { className: 'text-lg font-semibold mb-2' }, 'Personalized Results'),
+                            h('p', { className: 'text-gray-600' }, 'Get detailed feedback and recommendations tailored to your fundraising style')
+                        ),
+                        
+                        h('div', { className: 'card p-6 text-center' },
+                            h('div', { className: 'text-purple-600 mb-4' },
+                                h('div', { className: 'w-12 h-12 mx-auto bg-purple-100 rounded-full flex items-center justify-center' },
+                                    '📚'
+                                )
+                            ),
+                            h('h3', { className: 'text-lg font-semibold mb-2' }, 'Action Resources'),
+                            h('p', { className: 'text-gray-600' }, 'Access practical tools and strategies to implement donor-centered fundraising')
+                        )
+                    ),
+                    
+                    h('div', { className: 'card p-8' },
+                        h('h2', { className: 'text-2xl font-bold mb-4' }, 'About This Assessment'),
+                        h('p', { className: 'text-gray-600 mb-4' },
+                            'This assessment is designed to help fundraisers evaluate their current approach and discover opportunities to become more donor-centered. Based on proven fundraising principles, it examines four key areas:'
+                        ),
+                        h('ul', { className: 'list-disc pl-6 space-y-2 text-gray-600' },
+                            h('li', null, '🤝 Approach - How you initiate and structure donor conversations'),
+                            h('li', null, '👂 Listening - Your balance of talking versus listening'),
+                            h('li', null, '💝 Relationship Building - How you develop long-term donor connections'),
+                            h('li', null, '🎯 Strategy - Your timing and methods for making asks')
+                        )
+                    )
+                )
+            );
+        };
+        
+        const AssessmentPage = ({ onComplete }) => {
+            const [currentQuestion, setCurrentQuestion] = useState(0);
+            const [answers, setAnswers] = useState({});
+            const [selectedAnswer, setSelectedAnswer] = useState('');
+            
+            const progress = ((currentQuestion + 1) / assessmentQuestions.length) * 100;
+            const question = assessmentQuestions[currentQuestion];
+            
+            useEffect(() => {
+                setSelectedAnswer(answers[currentQuestion] || '');
+            }, [currentQuestion, answers]);
+            
+            const handleNext = () => {
+                if (selectedAnswer) {
+                    const newAnswers = { ...answers, [currentQuestion]: selectedAnswer };
+                    setAnswers(newAnswers);
+                    
+                    if (currentQuestion < assessmentQuestions.length - 1) {
+                        setCurrentQuestion(currentQuestion + 1);
+                    } else {
+                        localStorage.setItem('assessmentResults', JSON.stringify(newAnswers));
+                        onComplete(newAnswers);
+                    }
+                }
+            };
+            
+            const handlePrevious = () => {
+                if (currentQuestion > 0) {
+                    setCurrentQuestion(currentQuestion - 1);
+                }
+            };
+            
+            return h('div', { className: 'fade-in' },
+                h('div', { className: 'max-w-3xl mx-auto' },
+                    h('div', { className: 'mb-8' },
+                        h('div', { className: 'flex justify-between items-center mb-4' },
+                            h('h1', { className: 'text-2xl font-bold' }, 'Fundraising Assessment'),
+                            h('span', { className: 'text-sm text-gray-500' }, 
+                                `Question ${currentQuestion + 1} of ${assessmentQuestions.length}`
+                            )
+                        ),
+                        h('div', { className: 'progress-bar' },
+                            h('div', { 
+                                className: 'progress-fill', 
+                                style: { width: `${progress}%` } 
+                            })
+                        )
+                    ),
+                    
+                    h('div', { className: 'card p-8' },
+                        h('div', { className: 'mb-8' },
+                            h('h2', { className: 'text-xl font-semibold mb-3' }, question.question),
+                            question.description && 
+                                h('p', { className: 'text-gray-600' }, question.description)
+                        ),
+                        
+                        h('div', { className: 'space-y-4 mb-8' },
+                            question.options.map(option =>
+                                h('div', {
+                                    key: option.value,
+                                    className: `radio-option ${selectedAnswer === option.value ? 'selected' : ''}`,
+                                    onClick: () => setSelectedAnswer(option.value)
+                                },
+                                    h('div', { className: 'flex items-start space-x-3' },
+                                        h('input', {
+                                            type: 'radio',
+                                            name: 'answer',
+                                            value: option.value,
+                                            checked: selectedAnswer === option.value,
+                                            onChange: (e) => setSelectedAnswer(e.target.value),
+                                            className: 'mt-1'
+                                        }),
+                                        h('div', null,
+                                            h('div', { className: 'font-medium mb-1' }, option.text),
+                                            option.description && 
+                                                h('div', { className: 'text-sm text-gray-600' }, option.description)
+                                        )
+                                    )
+                                )
+                            )
+                        ),
+                        
+                        h('div', { className: 'flex justify-between' },
+                            h('button', {
+                                className: 'btn btn-secondary',
+                                onClick: handlePrevious,
+                                disabled: currentQuestion === 0
+                            }, '← Previous'),
+                            
+                            h('button', {
+                                className: 'btn btn-primary',
+                                onClick: handleNext,
+                                disabled: !selectedAnswer
+                            }, 
+                                currentQuestion === assessmentQuestions.length - 1 ? 'Complete Assessment' : 'Next →'
+                            )
+                        )
+                    )
+                )
+            );
+        };
+        
+        const ResultsPage = ({ results }) => {
+            if (!results) {
+                const stored = localStorage.getItem('assessmentResults');
+                if (!stored) {
+                    return h('div', { className: 'text-center' },
+                        h('h2', { className: 'text-2xl font-bold mb-4' }, 'No Results Found'),
+                        h('p', { className: 'text-gray-600' }, 'Please complete the assessment first.')
+                    );
+                }
+                results = JSON.parse(stored);
+            }
+            
+            const score = calculateScore(results);
+            const scoreInfo = getScoreCategory(score);
+            
+            return h('div', { className: 'fade-in' },
+                h('div', { className: 'max-w-4xl mx-auto' },
+                    h('div', { className: 'text-center mb-12' },
+                        h('h1', { className: 'text-3xl font-bold mb-4' }, 'Your Fundraising Assessment Results'),
+                        h('div', { className: 'card p-8' },
+                            h('div', { className: 'text-center' },
+                                h('div', { className: 'text-6xl font-bold mb-4', className: scoreInfo.color }, 
+                                    `${score}%`
+                                ),
+                                h('h2', { className: `text-2xl font-bold mb-4 ${scoreInfo.color}` }, 
+                                    scoreInfo.title
+                                ),
+                                h('p', { className: 'text-gray-600 text-lg' }, 
+                                    scoreInfo.description
+                                )
+                            )
+                        )
+                    ),
+                    
+                    h('div', { className: 'grid md:grid-cols-2 gap-8' },
+                        h('div', { className: 'card p-6' },
+                            h('h3', { className: 'text-xl font-bold mb-4' }, 'Key Strengths'),
+                            h('ul', { className: 'space-y-2' },
+                                score >= 60 ? [
+                                    h('li', { key: 1, className: 'text-green-600' }, '✓ Good relationship focus'),
+                                    h('li', { key: 2, className: 'text-green-600' }, '✓ Understanding donor importance'),
+                                    h('li', { key: 3, className: 'text-green-600' }, '✓ Strategic thinking')
+                                ] : [
+                                    h('li', { key: 1, className: 'text-gray-600' }, '• Room for growth in all areas'),
+                                    h('li', { key: 2, className: 'text-gray-600' }, '• Opportunity to transform approach'),
+                                    h('li', { key: 3, className: 'text-gray-600' }, '• Foundation for improvement')
+                                ]
+                            )
+                        ),
+                        
+                        h('div', { className: 'card p-6' },
+                            h('h3', { className: 'text-xl font-bold mb-4' }, 'Growth Opportunities'),
+                            h('ul', { className: 'space-y-2' },
+                                h('li', { className: 'text-blue-600' }, '• Start conversations with curiosity'),
+                                h('li', { className: 'text-blue-600' }, '• Listen more than you speak'),
+                                h('li', { className: 'text-blue-600' }, '• Focus on donor interests first'),
+                                h('li', { className: 'text-blue-600' }, '• Build relationships before asking')
+                            )
+                        )
+                    ),
+                    
+                    h('div', { className: 'card p-8 mt-8' },
+                        h('h3', { className: 'text-xl font-bold mb-6' }, 'Next Steps'),
+                        h('div', { className: 'space-y-4' },
+                            h('div', null,
+                                h('h4', { className: 'font-semibold mb-2' }, '1. Start with Curiosity'),
+                                h('p', { className: 'text-gray-600' }, 
+                                    'Begin every donor conversation by asking about their interests and what matters most to them.'
+                                )
+                            ),
+                            h('div', null,
+                                h('h4', { className: 'font-semibold mb-2' }, '2. Practice Active Listening'),
+                                h('p', { className: 'text-gray-600' }, 
+                                    'Aim to listen 70% of the time and talk 30%. Ask follow-up questions to show genuine interest.'
+                                )
+                            ),
+                            h('div', null,
+                                h('h4', { className: 'font-semibold mb-2' }, '3. Connect Authentically'),
+                                h('p', { className: 'text-gray-600' }, 
+                                    'Only present your organization\'s work after understanding how it aligns with their passions.'
+                                )
+                            )
+                        )
+                    )
+                )
+            );
+        };
+        
+        const ResourcesPage = () => {
+            return h('div', { className: 'fade-in' },
+                h('div', { className: 'max-w-4xl mx-auto' },
+                    h('h1', { className: 'text-3xl font-bold mb-8' }, 'Fundraising Resources'),
+                    
+                    h('div', { className: 'grid md:grid-cols-2 gap-8' },
+                        h('div', { className: 'card p-6' },
+                            h('h3', { className: 'text-xl font-bold mb-4' }, 'Conversation Starters'),
+                            h('ul', { className: 'space-y-2 text-gray-600' },
+                                h('li', null, '"What first got you interested in [cause]?"'),
+                                h('li', null, '"What would you most like to see change?"'),
+                                h('li', null, '"Tell me about your experience with..."'),
+                                h('li', null, '"What impact would matter most to you?"')
+                            )
+                        ),
+                        
+                        h('div', { className: 'card p-6' },
+                            h('h3', { className: 'text-xl font-bold mb-4' }, 'Listening Tips'),
+                            h('ul', { className: 'space-y-2 text-gray-600' },
+                                h('li', null, 'Ask open-ended questions'),
+                                h('li', null, 'Pause before responding'),
+                                h('li', null, 'Reflect back what you heard'),
+                                h('li', null, 'Show genuine curiosity')
+                            )
+                        ),
+                        
+                        h('div', { className: 'card p-6' },
+                            h('h3', { className: 'text-xl font-bold mb-4' }, 'Relationship Building'),
+                            h('ul', { className: 'space-y-2 text-gray-600' },
+                                h('li', null, 'Focus on their interests first'),
+                                h('li', null, 'Find authentic connections'),
+                                h('li', null, 'Follow up thoughtfully'),
+                                h('li', null, 'Respect their timeline')
+                            )
+                        ),
+                        
+                        h('div', { className: 'card p-6' },
+                            h('h3', { className: 'text-xl font-bold mb-4' }, 'Making Asks'),
+                            h('ul', { className: 'space-y-2 text-gray-600' },
+                                h('li', null, 'Wait for natural connection points'),
+                                h('li', null, 'Frame around their interests'),
+                                h('li', null, 'Present specific opportunities'),
+                                h('li', null, 'Allow time for consideration')
+                            )
+                        )
+                    )
+                )
+            );
+        };
+        
+        // Main App Component
+        const App = () => {
+            const [currentPage, setCurrentPage] = useState('home');
+            const [assessmentResults, setAssessmentResults] = useState(null);
+            const [sidebarOpen, setSidebarOpen] = useState(false);
+            
+            useEffect(() => {
+                const stored = localStorage.getItem('assessmentResults');
+                if (stored) {
+                    setAssessmentResults(JSON.parse(stored));
+                }
+            }, []);
+            
+            const handleAssessmentComplete = (results) => {
+                setAssessmentResults(results);
+                setCurrentPage('results');
+            };
+            
+            const renderCurrentPage = () => {
+                switch (currentPage) {
+                    case 'assessment':
+                        return h(AssessmentPage, { onComplete: handleAssessmentComplete });
+                    case 'results':
+                        return h(ResultsPage, { results: assessmentResults });
+                    case 'resources':
+                        return h(ResourcesPage);
+                    default:
+                        return h(HomePage);
+                }
+            };
+            
+            return h('div', { className: 'min-h-screen bg-gray-50' },
+                h(Sidebar, {
+                    currentPage,
+                    onPageChange: setCurrentPage,
+                    isOpen: sidebarOpen,
+                    onToggle: () => setSidebarOpen(!sidebarOpen)
+                }),
+                h('div', { className: 'main-content' },
+                    h('button', {
+                        className: 'btn btn-secondary mb-4 md:hidden',
+                        onClick: () => setSidebarOpen(!sidebarOpen)
+                    }, '☰ Menu'),
+                    renderCurrentPage()
+                )
+            );
+        };
+        
+        // Initialize the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(h(App));
+    </script>
+    
+    <!-- Babel for JSX-like syntax -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
 </html>
